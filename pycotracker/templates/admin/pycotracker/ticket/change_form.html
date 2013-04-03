@@ -1,0 +1,36 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}{{ block.super }}
+<script type="text/javascript" src="{{STATIC_URL}}lib/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+(function ($) {
+	$(document).ready(function () {
+		CKEDITOR.replace('id_content', {
+		    toolbar: 'Basic',
+		    uiColor: '#7CA0C7',
+		    toolbarGroups: [
+		        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+		        { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+				{ name: 'spellchecker' },
+				{ name: 'links' },
+				{ name: 'insert', groups: ['Image', 'Table', 'HorizontalRule'] },
+				'/',
+				{ name: 'styles' },
+				{ name: 'colors' },
+                { name: 'tools' },
+                { name: 'mode' }
+		    ]
+		});
+	});
+})(django.jQuery);
+</script>
+<style>
+label[for=id_content] {
+    display: none;
+}
+#id_content {
+    margin-left: 9em;
+}
+</style>
+{% endblock %}
